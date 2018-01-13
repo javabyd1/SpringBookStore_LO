@@ -13,6 +13,7 @@ public class Book {
     private String title;
     private String author;
 
+    //relacje
     @OneToOne
     @JoinColumn(name = "book_publisher_id")
     private Publisher publisher;
