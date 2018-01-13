@@ -14,8 +14,7 @@ public class Book {
     private String author;
 
     //relacje
-    @OneToOne
-    @JoinColumn(name = "book_publisher_id")
+    @ManyToOne
     private Publisher publisher;
 
     @ManyToOne
