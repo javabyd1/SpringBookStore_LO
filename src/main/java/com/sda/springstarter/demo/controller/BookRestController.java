@@ -17,6 +17,7 @@ public class BookRestController {
     @Autowired
     private BookServiceImpl bookService;
 
+    @CrossOrigin(value = "http://localhost:9999")
     @RequestMapping(method = RequestMethod.GET)
     public List<Book> getAllBooks(){
         return bookService.getAllBooks();

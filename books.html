@@ -1,0 +1,51 @@
+<html>
+<head>
+    <script	src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+<body>
+
+    <form>
+        Tytul:
+        <input id="title" type="text">
+        <input type="button" id="dodaj" value="Dodaj">
+    </form>
+
+   <ul></ul>
+
+
+
+    <script>
+        $(document).ready(function () {
+            console.log("Dziala");
+
+            $.ajax({
+                type: 'GET',
+                url: 'http://localhost:8080/books',
+                success: function (result) {
+                    console.log(result);
+                    $.each(result, function (key, value) {
+                        console.log(key);
+
+                        if(!jQuery.isEmptyObject(value.bookCategory)) {
+                            console.log(value.bookCategory.name);
+                        }
+
+                        $("ul").append("<li>" + value['title'] +"</li>");
+                    })
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+
+            });
+
+            $("#dodaj").click(function () {
+                var title = $("#title").val();
+                console.log(title);
+            });
+
+        });
+    </script>
+
+</body>
+</html>

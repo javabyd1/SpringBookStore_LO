@@ -30,12 +30,10 @@ public class BookServiceImpl implements BookService{
     }
 
     public Book getBookById(int id){
-        Optional<Book> book = bookRepository.findById(id);
-        if(book.isPresent()){
-            return book.get();
-        }else {
-            throw new BookNotFoundException(id);
-        }
+        Book book = bookRepository.findById(id).orElseThrow(
+                () -> new BookNotFoundException(id)
+        );
+        return book;
     }
 
     public Book getBookByTitle(String name){
