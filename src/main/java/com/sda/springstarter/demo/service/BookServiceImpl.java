@@ -1,12 +1,17 @@
 package com.sda.springstarter.demo.service;
 
+import com.sda.springstarter.demo.exception.ApiError;
+import com.sda.springstarter.demo.exception.BookNotFoundException;
 import com.sda.springstarter.demo.interfaces.BookService;
 import com.sda.springstarter.demo.model.Book;
 import com.sda.springstarter.demo.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BookServiceImpl implements BookService{
@@ -25,6 +30,15 @@ public class BookServiceImpl implements BookService{
     }
 
     public Book getBookById(int id){
-        return bookRepository.findById(id);
+        Optional<Book> book = bookRepository.findById(id);
+        if(book.isPresent()){
+            return book.get();
+        }else {
+            throw new BookNotFoundException(id);
+        }
+    }
+
+    public Book getBookByTitle(String name){
+        return bookRepository.findByTitle(name);
     }
 }

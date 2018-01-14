@@ -1,5 +1,6 @@
 package com.sda.springstarter.demo.controller;
 
+import com.sda.springstarter.demo.exception.BookNotFoundException;
 import com.sda.springstarter.demo.model.Book;
 import com.sda.springstarter.demo.service.BookServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/books")
+@RequestMapping(value = "books")
 public class BookRestController {
 
     @Autowired
