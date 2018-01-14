@@ -13,8 +13,7 @@ public class Book {
     private String title;
     private String author;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "book_publisher_id")
+    @ManyToOne
     private Publisher publisher;
 
     @ManyToOne
