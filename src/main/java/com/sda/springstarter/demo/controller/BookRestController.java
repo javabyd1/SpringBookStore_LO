@@ -23,6 +23,12 @@ public class BookRestController {
         return bookService.getAllBooks();
     }
 
+    @CrossOrigin(value = "http://localhost:9999")
+    @RequestMapping(method = RequestMethod.POST)
+    public void saveBook(@RequestBody Book book){
+         bookService.saveBook(book);
+    }
+
     @GetMapping(value = "{id}")
     public ResponseEntity<Book> getBookById(@PathVariable int id){
         return ResponseEntity
