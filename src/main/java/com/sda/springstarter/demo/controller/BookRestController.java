@@ -8,7 +8,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(value = "books")
@@ -16,7 +18,7 @@ public class BookRestController {
 
     @Autowired
     private BookServiceImpl bookService;
-
+//
     @CrossOrigin(value = "http://localhost:9999")
     @RequestMapping(method = RequestMethod.GET)
     public List<Book> getAllBooks(){
@@ -35,4 +37,5 @@ public class BookRestController {
                 .status(HttpStatus.OK)
                 .body(bookService.getBookById(id));
     }
+
 }

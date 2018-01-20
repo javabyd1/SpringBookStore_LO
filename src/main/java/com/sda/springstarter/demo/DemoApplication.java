@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @SpringBootApplication
 public class DemoApplication implements CommandLineRunner{
@@ -22,11 +23,11 @@ public class DemoApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 
-		Book book1 = new Book("Tytul", "Autor");
-		Book book2 = new Book("Tytul2", "Autor2");
-
-		bookService.saveBook(book1);
-		bookService.saveBook(book2);
+//		Book book1 = new Book("Tytul", "Autor");
+//		Book book2 = new Book("Tytul2", "Autor2");
+//
+//		bookService.saveBook(book1);
+//		bookService.saveBook(book2);
 
 	}
 }

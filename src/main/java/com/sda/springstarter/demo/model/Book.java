@@ -11,7 +11,6 @@ public class Book {
     private int id;
 
     private String title;
-    private String author;
 
     @ManyToOne
     private Publisher publisher;
@@ -19,7 +18,7 @@ public class Book {
     @ManyToOne
     private BookCategory bookCategory;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Author bookAuthor;
 
     public Book() {
@@ -27,7 +26,14 @@ public class Book {
 
     public Book(String title, String author) {
         this.title = title;
-        this.author = author;
+    }
+
+    public Author getBookAuthor() {
+        return bookAuthor;
+    }
+
+    public void setBookAuthor(Author bookAuthor) {
+        this.bookAuthor = bookAuthor;
     }
 
     public Publisher getPublisher() {
@@ -62,11 +68,4 @@ public class Book {
         this.title = title;
     }
 
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
 }
