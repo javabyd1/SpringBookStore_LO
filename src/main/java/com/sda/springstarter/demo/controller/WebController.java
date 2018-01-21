@@ -1,6 +1,5 @@
 package com.sda.springstarter.demo.controller;
 
-import com.sda.springstarter.demo.interfaces.BookService;
 import com.sda.springstarter.demo.model.Book;
 import com.sda.springstarter.demo.service.BookServiceImpl;
 import com.sda.springstarter.demo.service.CategoryServiceImpl;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
@@ -40,11 +40,15 @@ public class WebController {
     }
 
     @PostMapping(value = "addbook")
-    public String addBook( @ModelAttribute("book") @Valid Book book,
-                                 BindingResult userloginResult){
+    public String addBook(@ModelAttribute("book")
+                          @Valid Book book,
+                          BindingResult bookreslut,
+                          RedirectAttributes redirectAttributes){
         bookService.saveBook(book);
+        redirectAttributes
+                .addFlashAttribute("message", "Successfully added..");
 
-        return "Dodalo";
+        return "redirect:/lista";
     }
 
 
