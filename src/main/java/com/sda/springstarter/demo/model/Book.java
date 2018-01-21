@@ -1,6 +1,7 @@
 package com.sda.springstarter.demo.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "ksiazki")
@@ -10,6 +11,7 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
+    @Size(max = 23)
     private String title;
 
     @ManyToOne
