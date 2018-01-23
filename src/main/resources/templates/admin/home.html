@@ -8,6 +8,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
+<form th:action="@{/logout}" method="post">
+    <button class="btn btn-danger" name="registration" type="submit">Wyloguj się</button>
+</form>
 
+<h2>Admin</h2>
+
+<p th:utext="${userName}"></p>
 </body>
 </html>
