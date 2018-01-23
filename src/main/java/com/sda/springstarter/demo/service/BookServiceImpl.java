@@ -30,6 +30,7 @@ public class BookServiceImpl implements BookService{
     }
 
     public Book getBookById(int id){
+
         Book book = bookRepository.findById(id).orElseThrow(
                 () -> new BookNotFoundException(id)
         );

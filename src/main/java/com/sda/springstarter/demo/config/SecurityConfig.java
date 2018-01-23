@@ -1,6 +1,7 @@
 package com.sda.springstarter.demo.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -22,12 +23,19 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter{
     @Autowired
     private DataSource dataSource;
 
+    @Value("${spring.query.users-query}")
+    private String usersQuery;
+
+    @Value("${spring.query.roles-query}")
+    private String rolesQuery;
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth)
         throws Exception{
+
         auth.jdbcAuthentication()
-                .usersByUsernameQuery()
-                .authoritiesByUsernameQuery()
+                .usersByUsernameQuery(usersQuery)
+                .authoritiesByUsernameQuery(rolesQuery)
                 .dataSource(dataSource)
                 .passwordEncoder(bCryptPasswordEncoder);
     }
