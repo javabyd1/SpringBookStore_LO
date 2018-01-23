@@ -48,7 +48,7 @@ public class LoginController {
             modelAndView.setViewName("registration");
         }else {
             userService.saveUser(user);
-
+            modelAndView.addObject("successMessage", "Zarejestrowales sie!");
         }
         return modelAndView;
     }
